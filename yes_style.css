@@ -1,0 +1,154 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+    height: 100vh;
+    background-image: url('pink-yellow-plain-background.jpg'); /* Add your image path here */
+    background-size: cover; /* Make the background cover the entire screen */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Playfair Display', serif; /* Apply Playfair Display as the default font for the body */
+}
+
+.header_text {
+    font-family: 'Dancing Script', cursive; /* Apply Dancing Script font to the header text */
+    font-size: 5vh;
+    font-weight: bold;
+    color: black;
+    margin: 0;
+    margin-bottom: 15px; /* Add space between header and image */
+}
+
+.gif-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the image */
+    align-items: center;     /* Vertically center the image */
+    width: 400px;             /* Set the width of the container based on the image size */
+    height: 400px;            /* Set the height of the container based on the image size */
+    padding: 10px;           /* Thin padding to create a border effect */
+    background-color: black; /* Set the background color to black to act as a border */
+    border-radius: 10px;     /* Optional: Round the edges of the border */
+    margin-bottom: 20px;     /* Add space between the image and new text */
+}
+
+img {
+    width: 98%;  /* Ensure the image takes up most of the container width */
+    max-width: 98%;  /* Limit image size so it leaves space for the border */
+    height: auto;   /* Maintain the image's aspect ratio */
+    border-radius: 10px; /* Optional: Round the image corners to match the border radius */
+}
+
+.details {
+    font-family: 'Playfair Display', serif; /* Use Playfair Display for the details */
+    font-size: 2.5vh;
+    font-weight: bold;
+    color: black;
+    margin: 0;
+    text-align: center;
+}
+
+.detail-item {
+    display: block; /* Forces each item to be on its own line */
+    margin-bottom: 5px; /* Adjust space between each item */
+}
+
+.celebrate-flower {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    pointer-events: none; /* clicks pass through */
+    z-index: -1;          /* behind all other elements */
+    background-image: url('https://png.pngtree.com/png-clipart/20231206/original/pngtree-realistic-beautiful-pink-flowers-png-image_13781753.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: drift 6s infinite ease-in-out;
+}
+
+/* Add keyframes for the drift animation */
+@keyframes drift {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .header_text {
+        font-size: 5vw; /* Adjust font size for smaller screens */
+    }
+
+    .gif-container {
+        width: 80%; /* Make the image container take up more space on smaller screens */
+    }
+
+    img {
+        max-width: 60%; /* Increase image size on smaller screens */
+    }
+
+    .btn {
+        padding: 2vh 5vh;
+        font-size: 4vw; /* Adjust button size for smaller screens */
+    }
+
+    .buttons {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+    }
+}
+
+
+/* Responsive styles for iPhones 11 to 14 */
+@media only screen and (max-width: 414px) {
+    .header_text {
+        font-size: 24px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    #startMusicButton {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .header_text {
+        font-size: 22px;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    #startMusicButton {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .header_text {
+        font-size: 20px;
+    }
+
+    .btn {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+
+    #startMusicButton {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+}

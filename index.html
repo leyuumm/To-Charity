@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap" rel="stylesheet"> <!-- Google Fonts link -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <audio id="monthsaryMusic" src="https://audio.jukehost.co.uk/MubuMnEf1n18jNgI1zAm2prCS8t4jNqM" preload="auto"></audio>
+    <div>
+        <div>
+            <h1 class="header_text">Hi Charity, it's season of love</h1>
+            <h2 class="header_text">Will you be my valentine?</h2>
+        </div>
+        
+        <div class="gif-container">
+            <img src= "https://s3.gifyu.com/images/b2GcA.gif" alt="Valentine GIF">
+        </div>
+        
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="nextPage()" disabled>Yes</button>
+            <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()" disabled>No</button>
+        </div>
+    </div>
+
+    <!-- Add a button to start the music -->
+    <div id="startMusicContainer">
+        <button id="startMusicButton" onclick="startMusic()">Press here first!</button>
+    </div>
+
+    <script>
+        function nextPage() {
+            const yesButton = document.getElementById('yesButton');
+
+            window.location.href = "yes.html";
+            startCelebration();
+            playMusic();
+        }
+
+        function moveButton() {
+            // Get the button's dimensions
+            var button = document.getElementById('noButton');
+            var buttonWidth = button.offsetWidth;
+            var buttonHeight = button.offsetHeight;
+
+            // Calculate a random position within the viewport, ensuring the button doesn't overflow
+            var x = Math.random() * (window.innerWidth - buttonWidth);
+            var y = Math.random() * (window.innerHeight - buttonHeight);
+
+            // Set the button's new position
+            button.style.position = 'absolute'; // Make sure the button can move freely
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+
+        // Function to create flower elements on the screen with random positions
+        function createFlowers() {
+            const celebrationDiv = document.getElementById('yesButton');
+
+            for (let i = 0; i < 50; i++) {
+                const flower = document.createElement('div');
+                flower.classList.add('celebrate-flower');
+                flower.style.left = `${Math.random() * 100}vw`;
+                flower.style.top = `${Math.random() * 100}vh`;
+                flower.style.animationDelay = `${Math.random() * 5}s`;
+                flower.style.transform = `rotate(${Math.random() * 360}deg)`;
+                celebrationDiv.appendChild(flower);
+            }
+        }
+
+        // Function to show the celebration animation
+        function startCelebration() {
+            const celebrationDiv = document.getElementById('yesButton');
+            celebrationDiv.style.display = 'block';
+            createFlowers();
+            playMusic();
+        }
+
+        // Function to play the music
+        function playMusic() {
+            const monthsaryMusic = document.getElementById('monthsaryMusic');
+            monthsaryMusic.currentTime = 0; // Reset music to start
+            monthsaryMusic.play().catch(error => {
+                console.log("Music playback error: ", error);
+            });
+        }
+
+        // Function to start the music and hide the start button
+        function startMusic() {
+            playMusic();
+            document.getElementById('startMusicContainer').style.display = 'none';
+            document.getElementById('yesButton').disabled = false;
+            document.getElementById('noButton').disabled = false;
+        }
+
+        // Run createFlowers when the page loads
+        document.addEventListener('DOMContentLoaded', createFlowers);
+    </script>
+</body>
+</html>
